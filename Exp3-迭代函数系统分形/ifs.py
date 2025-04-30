@@ -32,15 +32,15 @@ def apply_transform(point, params):
     """
     应用单个变换到点
     :param point: 当前点坐标(x,y)
-    :param params: 变换参数[a,b,c,d,e,f,p]
+    :param params: 变换参数[a,b,c,d,e,f]
     :return: 变换后的新坐标(x',y')
     """
-    # TODO: 实现变换公式
     x, y = point
-    a, b, c, d, e, f, _ = params  # 忽略概率p
+    a, b, c, d, e, f = params
     x_new = a*x + b*y + e
     y_new = c*x + d*y + f
     return (x_new, y_new)
+
 
 def run_ifs(ifs_params, num_points=100000, num_skip=100):
     """
@@ -95,10 +95,13 @@ if __name__ == "__main__":
     # 生成并绘制概率树
     tree_params = get_tree_params()
     tree_points = run_ifs(tree_params)
-    plot_ifs(tree_points, "Probability Tree")（这段代码中return [
+    plot_ifs(tree_points, "Probability Tree")
+'''
+        这段代码中return [
         # a     b      c      d      e     f      p
         [0.00, 0.00, 0.00, 0.16, 0.00, 0.00, 0.01],   # 茎干
         [0.85, 0.04, -0.04, 0.85, 0.00, 1.60, 0.85],  # 小叶
         [0.20, -0.26, 0.23, 0.22, 0.00, 1.60, 0.07],  # 左大叶
         [-0.15, 0.28, 0.26, 0.24, 0.00, 0.44, 0.07]   # 右大叶
-        ]
+        ])
+'''
